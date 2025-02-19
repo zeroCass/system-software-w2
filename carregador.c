@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 
-extern void carregar_na_memoria(int, int*, int);
+extern void carregar_na_memoria(int, int*, int, int*);
 
 // eh assumido que o programa recebera SEMPRE args valido pela linha de comando
 int main (int argc, char *argv[]) {
@@ -19,11 +19,10 @@ int main (int argc, char *argv[]) {
     for (int i = 0; i < arr_mem_size; i++) {
         arr_mem[i] = atoi(argv[i + 2]);
     }
-    arr_mem_size /= 2;
+    arr_mem_size /= 2; // o array sera interpretado como 2d com duas colunas sempre
 
-    carregar_na_memoria(prog_size, arr_mem, arr_mem_size);
-
-
+    int allocation_arr[8] = {0}; // declaracao do array de resultados
+    carregar_na_memoria(prog_size, arr_mem, arr_mem_size, allocation_arr);
 
     return 0;
 }
